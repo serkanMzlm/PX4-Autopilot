@@ -32,10 +32,10 @@
         </material>
       </visual>
       <collision name="base_link_collision_0">
-        <pose>0 0 -0.025 0 0 0</pose>
+        <pose>0.02 0.0 -0.02 0 0 0</pose>
         <geometry>
           <box>
-            <size>0.35355339059327373 0.35355339059327373 0.16</size>
+            <size>0.42 0.35 0.18</size>
           </box>
         </geometry>
         <surface>
@@ -52,7 +52,7 @@
       </collision>
       <sensor name="air_pressure_sensor" type="air_pressure">
         <always_on>1</always_on>
-        <update_rate>50</update_rate>
+        <update_rate>25</update_rate>
         <air_pressure>
           <pressure>
             <noise type="gaussian">
@@ -116,7 +116,7 @@
 
       <sensor name="depth_camera_on" type="depth_camera">
         <pose>0 0 0.1 0 0 0</pose>
-        <update_rate>4</update_rate>
+        <update_rate>3</update_rate>
         <topic>depth_camera_on</topic>
         <visualize>true</visualize>
         <camera>
@@ -187,7 +187,7 @@
 
         <sensor name="depth_camera_sol" type="depth_camera">
           <pose>0 0 0.15 0 0 1.57</pose>
-          <update_rate>4</update_rate>
+          <update_rate>3</update_rate>
           <topic>depth_camera_sol</topic>
           <visualize>true</visualize>
           <camera>
@@ -210,7 +210,7 @@
         </sensor>
         <sensor name="depth_camera_sag" type="depth_camera">
           <pose>0 0 0.15 0 0 -1.57</pose>
-          <update_rate>4</update_rate>
+          <update_rate>3</update_rate>
           <topic>depth_camera_sag</topic>
           <visualize>true</visualize>
           <camera>
@@ -375,7 +375,7 @@
           </script>
         </material>
       </visual>
-      <collision name="rotor_0_collision">
+      <!-- <collision name="rotor_0_collision">
         <pose>0 0 0 0 0 0 </pose>
         <geometry>
           <box>
@@ -393,7 +393,7 @@
             <ode/>
           </friction>
         </surface>
-      </collision>
+      </collision> -->
     </link>
     <joint name="rotor_0_joint" type="revolute">
       <parent>base_link</parent>
@@ -438,7 +438,7 @@
           </script>
         </material>
       </visual>
-      <collision name="rotor_1_collision">
+      <!-- <collision name="rotor_1_collision">
         <pose>0 0 0 0 0 0 </pose>
         <geometry>
           <box>
@@ -456,7 +456,7 @@
             <ode/>
           </friction>
         </surface>
-      </collision>
+      </collision> -->
     </link>
     <joint name="rotor_1_joint" type="revolute">
       <parent>base_link</parent>
@@ -501,7 +501,7 @@
           </script>
         </material>
       </visual>
-      <collision name="rotor_2_collision">
+      <!-- <collision name="rotor_2_collision">
         <pose>0 0 0 0 0 0 </pose>
         <geometry>
           <box>
@@ -519,7 +519,7 @@
             <ode/>
           </friction>
         </surface>
-      </collision>
+      </collision> -->
     </link>
     <joint name="rotor_2_joint" type="revolute">
       <parent>base_link</parent>
@@ -564,7 +564,7 @@
           </script>
         </material>
       </visual>
-      <collision name="rotor_3_collision">
+      <!-- <collision name="rotor_3_collision">
         <pose>0 0 0 0 0 0 </pose>
         <geometry>
           <box>
@@ -582,7 +582,7 @@
             <ode/>
           </friction>
         </surface>
-      </collision>
+      </collision> -->
     </link>
     <joint name="rotor_3_joint" type="revolute">
       <parent>base_link</parent>
@@ -690,13 +690,13 @@
             rgba="1 0.93725 0.13725 1" />
         </material>
       </visual>
-      <collision name= "rovercopter_v3/sag_palet_collision">
+      <!-- <collision name= "rovercopter_v3/sag_palet_collision">
         <geometry>
           <box>
-            <size>0.40 0.02 0.2</size>
+            <size>0.40 0.02 0.18</size>
           </box>
         </geometry>
-      </collision>
+      </collision> -->
     </link>
     <joint name="rovercopter_v3/J_SAG-PALET" type="fixed">
       <parent> base_link </parent>
@@ -741,13 +741,13 @@
             rgba="1 0.93725 0.13725 1" />
         </material>
       </visual>
-      <collision name= "rovercopter_v3/sol_palet_collision">
+      <!-- <collision name= "rovercopter_v3/sol_palet_collision">
         <geometry>
           <box>
-              <size>0.40 0.02 0.2</size>
+              <size>0.40 0.02 0.18</size>
           </box>
         </geometry>
-      </collision>
+      </collision> -->
     </link>
     <joint name="rovercopter_v3/J_SOL-PALET" type="fixed">
       <parent> base_link </parent>
