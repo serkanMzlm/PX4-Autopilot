@@ -1,8 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <sdf version='1.9'>
   <world name='default'>
     <physics type="ode">
       <max_step_size>0.004</max_step_size>
-      <real_time_factor>1.0</real_time_factor>
+      <real_time_factor>1.005</real_time_factor>
       <real_time_update_rate>250</real_time_update_rate>
     </physics>
     <plugin name='gz::sim::systems::Physics' filename='gz-sim-physics-system'/>
@@ -15,58 +16,8 @@
     <plugin name='gz::sim::systems::Sensors' filename='gz-sim-sensors-system'>
       <render_engine>ogre2</render_engine>
     </plugin>
-    <gui fullscreen='false'>
-      <plugin name='3D View' filename='GzScene3D'>
-        <gz-gui>
-          <title>3D View</title>
-          <property type='bool' key='showTitleBar'>0</property>
-          <property type='string' key='state'>docked</property>
-        </gz-gui>
-        <engine>ogre2</engine>
-        <scene>scene</scene>
-        <ambient_light>0.5984631152222222 0.5984631152222222 0.5984631152222222</ambient_light>
-        <background_color>0.8984631152222222 0.8984631152222222 0.8984631152222222</background_color>
-        <camera_pose>-6 0 6 0 0.5 0</camera_pose>
-      </plugin>
-      <plugin name='World control' filename='WorldControl'>
-        <gz-gui>
-          <title>World control</title>
-          <property type='bool' key='showTitleBar'>0</property>
-          <property type='bool' key='resizable'>0</property>
-          <property type='double' key='height'>72</property>
-          <property type='double' key='width'>121</property>
-          <property type='double' key='z'>1</property>
-          <property type='string' key='state'>floating</property>
-          <anchors target='3D View'>
-            <line own='left' target='left'/>
-            <line own='bottom' target='bottom'/>
-          </anchors>
-        </gz-gui>
-        <play_pause>1</play_pause>
-        <step>1</step>
-        <start_paused>1</start_paused>
-      </plugin>
-      <plugin name='World stats' filename='WorldStats'>
-        <gz-gui>
-          <title>World stats</title>
-          <property type='bool' key='showTitleBar'>0</property>
-          <property type='bool' key='resizable'>0</property>
-          <property type='double' key='height'>110</property>
-          <property type='double' key='width'>290</property>
-          <property type='double' key='z'>1</property>
-          <property type='string' key='state'>floating</property>
-          <anchors target='3D View'>
-            <line own='right' target='right'/>
-            <line own='bottom' target='bottom'/>
-          </anchors>
-        </gz-gui>
-        <sim_time>1</sim_time>
-        <real_time>1</real_time>
-        <real_time_factor>1</real_time_factor>
-        <iterations>1</iterations>
-      </plugin>
-      <plugin name='Entity tree' filename='EntityTree'/>
-    </gui>
+ 
+
     <gravity>0 0 -9.8</gravity>
     <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
     <atmosphere type='adiabatic'/>
@@ -76,6 +27,89 @@
       <background>0.7 0.7 0.7 1</background>
       <shadows>true</shadows>
     </scene>
+
+  <include>
+    <name>wall_1</name>
+    <pose>-1.0 20.5 0.20 0 0 1.57</pose>
+    <uri>https://fuel.gazebosim.org/1.0/makerspet/models/room_wall_2x5m</uri>
+  </include>
+  <include>
+    <name>wall_2</name>
+    <pose>-2 19 0.20 0 0 1.57</pose>
+    <uri>https://fuel.gazebosim.org/1.0/makerspet/models/room_wall_2x5m</uri>
+  </include>
+  
+
+  <include>
+    <name>LitterBin_1</name>
+    <pose>-0.24 14.36 0 0 0 0.2</pose>
+    <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/LitterBin</uri>
+  </include>
+  
+  <!-- <include>
+    <name>mobile_1</name>
+    <pose>0.69 18.32 0 0 0 -1.17</pose>
+    <uri> https://fuel.gazebosim.org/1.0/NGD1004/models/pallet_box_mobile</uri>
+  </include> -->
+   <!-- <include>
+    <name>mobile_2</name>
+    <pose>-0.14 19 0 0 0 1.57</pose>
+    <uri> https://fuel.gazebosim.org/1.0/NGD1004/models/pallet_box_mobile</uri>
+  </include>
+   <include>
+    <name>mobile_3</name>
+    <pose>-1.75 20.5 0 0 0 1.57</pose>
+    <uri> https://fuel.gazebosim.org/1.0/NGD1004/models/pallet_box_mobile</uri>
+  </include> -->
+ 
+  <!-- <include>
+    <pose>1.47 15.94 0.6 2.96 1.53 2.14</pose>
+    <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/OrangeDoors</uri>
+  </include> -->
+
+  <include>
+    <name>OrangeDoors1</name>
+    <pose>2.19 18.55 0.4 0.05 1.57 2.05</pose>
+    <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/OrangeDoors</uri>
+  </include>
+  <include>
+    <name>OrangeDoors2</name>
+    <pose>2.4 16.65 0.4 1.6 1.57 -3.01</pose>
+    <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/OrangeDoors</uri>
+  </include>
+  <include>
+    <name>OrangeDoors3</name>
+    <pose>2.42 16.57 0.4 -2.73 1.57 1.38</pose>
+    <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/OrangeDoors</uri>
+  </include>
+  <include>
+    <name>OrangeDoors4</name>
+    <pose>1.22 14.93 0.4 -2.25 1.57 2</pose>
+    <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/OrangeDoors</uri>
+  </include>
+  <include>
+    <name>OrangeDoors5</name>
+    <pose>0.5 19 0.4 1.24 1.57 0</pose>
+    <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/OrangeDoors</uri>
+  </include>
+  <include>
+    <name>OrangeDoors6</name>
+    <pose>0 15.75 0.4 -0.88 1.57 0</pose>
+    <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/OrangeDoors</uri>
+  </include>
+  <include>
+    <name>OrangeDoors7</name>
+    <pose>0 15.7 0.4 -1.57 1.57 2</pose>
+    <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/OrangeDoors</uri>
+  </include>
+
+
+  <include>
+    <name>OrangeDoorsYan</name>
+    <pose>0.87 15.45 0.4 2.96 1.53 2.14</pose>
+    <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/OrangeDoors</uri>
+  </include>
+
     <model name='ground_plane'>
       <static>true</static>
       <link name='link'>
