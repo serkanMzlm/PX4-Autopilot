@@ -26,7 +26,7 @@
         <scene>scene</scene>
         <ambient_light>0.5984631152222222 0.5984631152222222 0.5984631152222222</ambient_light>
         <background_color>0.8984631152222222 0.8984631152222222 0.8984631152222222</background_color>
-        <camera_pose>-6 0 6 0 0.5 0</camera_pose>
+        <camera_pose>-5 0 5 0 1 0</camera_pose>
       </plugin>
       <plugin name='World control' filename='WorldControl'>
         <gz-gui>
@@ -65,7 +65,7 @@
         <real_time_factor>1</real_time_factor>
         <iterations>1</iterations>
       </plugin>
-      <plugin name='Visualize lidar' filename='VisualizeLidar'/>
+      <!-- <plugin name='Visualize lidar' filename='VisualizeLidar'/> -->
     </gui>
 
     <gravity>0 0 -9.8</gravity>

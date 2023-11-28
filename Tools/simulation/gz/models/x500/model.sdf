@@ -72,17 +72,17 @@
         <camera>
           <horizontal_fov>1.3</horizontal_fov>
           <image>
-            <width>380</width>
-            <height>380</height>
+            <width>360</width>
+            <height>360</height>
           </image>
         </camera>
         <always_on>1</always_on>
-        <update_rate>15</update_rate>
+        <update_rate>10</update_rate>
         <visualize>true</visualize>
         <topic>camera_vision</topic>
       </sensor>
 
-       <sensor name="front_laser" type="gpu_ray">
+       <!-- <sensor name="front_laser" type="gpu_ray">
                 <pose>0 0 0.1 0 0 0</pose>
                 <update_rate>4</update_rate>
                 <topic>lidar</topic>
@@ -95,10 +95,10 @@
                             <max_angle>0.38</max_angle>
                         </horizontal>
                         <vertical>
-                            <samples>8</samples>
+                            <samples>5</samples>
                             <resolution>1</resolution>
-                            <min_angle>-0.38</min_angle>
-                            <max_angle>0.38</max_angle>                           
+                            <min_angle>-0.174533</min_angle>
+                            <max_angle>0.174533</max_angle>                           
                         </vertical>
                     </scan>
                     <range>
@@ -112,7 +112,7 @@
                         <stddev>0.01</stddev>
                     </noise>
                 </lidar>
-        </sensor>
+        </sensor> -->
 
       <sensor name="depth_camera_on" type="depth_camera">
         <pose>0 0 0.1 0 0 0</pose>
@@ -128,13 +128,13 @@
           </image>
           <clip>
             <near>0.1</near>
-            <far>2.5</far>
+            <far>2.0</far>
           </clip>
-          <noise>
+          <!-- <noise>
               <type>gaussian</type>
               <mean>0</mean>
               <stddev>0.01</stddev>
-            </noise>
+            </noise> -->
         </camera>
         </sensor>
 
@@ -199,13 +199,13 @@
             </image>
             <clip>
               <near>0.1</near>
-              <far>2.5</far>
+              <far>2.0</far>
             </clip>
-            <noise>
+            <!-- <noise>
               <type>gaussian</type>
               <mean>0</mean>
               <stddev>0.01</stddev>
-            </noise>
+            </noise> -->
           </camera>
         </sensor>
         <sensor name="depth_camera_sag" type="depth_camera">
@@ -222,13 +222,13 @@
             </image>
             <clip>
               <near>0.1</near>
-              <far>2.5</far>
+              <far>2.0</far>
             </clip>
-            <noise>
+            <!-- <noise>
               <type>gaussian</type>
               <mean>0</mean>
               <stddev>0.01</stddev>
-            </noise>
+            </noise> -->
           </camera>
         </sensor>
 
