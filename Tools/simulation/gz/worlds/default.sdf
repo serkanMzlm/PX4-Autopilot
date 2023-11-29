@@ -74,7 +74,11 @@
 
    <include>
       <uri>maze/</uri>
-    </include>
+  </include> 
+  
+  <include>
+      <uri>smoke/</uri>
+  </include>
     
     <model name='ground_plane'>
       <static>true</static>
