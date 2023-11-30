@@ -548,7 +548,7 @@ transition_result_t Commander::arm(arm_disarm_reason_t calling_reason, bool run_
 				{events::Log::Critical, events::LogInternal::Info},
 				"Arming denied: throttle above center");
 				tune_negative(true);
-				return TRANSITION_DENIED;
+				// return TRANSITION_DENIED;
 			}
 
 			if (!_vehicle_control_mode.flag_control_climb_rate_enabled &&
@@ -559,7 +559,7 @@ transition_result_t Commander::arm(arm_disarm_reason_t calling_reason, bool run_
 				{events::Log::Critical, events::LogInternal::Info},
 				"Arming denied: high throttle");
 				tune_negative(true);
-				return TRANSITION_DENIED;
+				// return TRANSITION_DENIED;
 			}
 
 		} else if (calling_reason == arm_disarm_reason_t::rc_stick
@@ -570,7 +570,7 @@ transition_result_t Commander::arm(arm_disarm_reason_t calling_reason, bool run_
 			{events::Log::Critical, events::LogInternal::Info},
 			"Arming denied: switch to manual mode first");
 			tune_negative(true);
-			return TRANSITION_DENIED;
+			// return TRANSITION_DENIED;
 		}
 	}
 
@@ -612,7 +612,7 @@ transition_result_t Commander::disarm(arm_disarm_reason_t calling_reason, bool f
 				"Disarming denied, not landed");
 			}
 
-			return TRANSITION_DENIED;
+			// return TRANSITION_DENIED;
 		}
 	}
 
