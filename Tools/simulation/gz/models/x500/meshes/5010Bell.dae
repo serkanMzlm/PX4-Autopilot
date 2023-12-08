@@ -145,7 +145,7 @@
               <color sid="emission">0 0 0 1</color>
             </emission>
             <diffuse>
-              <color sid="diffuse">0.03106355 0.03106355 0.03106355 1</color>
+              <color sid="diffuse">0.03106355 0.03106355 0.8 1</color>
             </diffuse>
             <reflectivity>
               <float sid="specular">1</float>

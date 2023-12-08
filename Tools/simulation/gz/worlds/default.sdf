@@ -15,7 +15,9 @@
     <plugin name='gz::sim::systems::Sensors' filename='gz-sim-sensors-system'>
       <render_engine>ogre2</render_engine>
     </plugin>
-    <gui fullscreen='false'>
+    
+<gui fullscreen='false'>
+    <!-- view angle -->
       <plugin name='3D View' filename='GzScene3D'>
         <gz-gui>
           <title>3D View</title>
@@ -26,7 +28,8 @@
         <scene>scene</scene>
         <ambient_light>0.5984631152222222 0.5984631152222222 0.5984631152222222</ambient_light>
         <background_color>0.8984631152222222 0.8984631152222222 0.8984631152222222</background_color>
-        <camera_pose>-5 0 5 0 1 0</camera_pose>
+        <camera_pose>-3 -4 3 0 0.34 0.95</camera_pose>
+        <horizontal_fov>57.29578</horizontal_fov>
       </plugin>
       <plugin name='World control' filename='WorldControl'>
         <gz-gui>
@@ -66,12 +69,49 @@
         <iterations>1</iterations>
       </plugin>
       <!-- <plugin name='Visualize lidar' filename='VisualizeLidar'/> -->
+      <!-- <plugin name='Image Display' filename='ImageDisplay'/> -->
+      <plugin filename="ImageDisplay" name="Image Display">
+                <gz-gui>
+                  <title>Camera</title>
+                  <property key="state" type="string">docked</property>
+                </gz-gui>
+                <topic>/camera_vision</topic>
+            </plugin>
+      <!-- <plugin filename="VisualizeLidar" name="Visualize Lidar">
+              <gz-gui>
+                <title>Lidar</title>
+                <property type="string" key="state">docked</property>
+              </gz-gui>
+      </plugin> -->
     </gui>
-
     <gravity>0 0 -9.8</gravity>
     <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
     <atmosphere type='adiabatic'/>
-    
+
+    <!-- <include>
+      <pose>0 0 0.2 0 0 0</pose>
+      <uri>https://fuel.gazebosim.org/1.0/hexarotor/models/grasspatch</uri>
+    </include> -->
+    <include>
+      <pose>0 0 -0.09 0 0 0</pose>
+      <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Warehouse</uri>
+    </include>
+    <include>
+      <pose>-0.79 1.43 -0.02 0 0 0</pose>
+      <uri>zemin/model.sdf</uri>
+    </include>
+
+    <include>
+      <name>shelf_1</name>
+      <pose>0 2 0.05 0 0 0</pose>
+      <uri>https://fuel.gazebosim.org/1.0/ctrazziwp/models/shelf</uri>
+    </include>
+    <include>
+      <name>shelf_2</name>
+      <pose>0 2 1.8 0 0 0</pose>
+      <uri>https://fuel.gazebosim.org/1.0/ctrazziwp/models/shelf</uri>
+    </include>
+  
     <model name='ground_plane'>
       <static>true</static>
       <link name='link'>
@@ -98,12 +138,12 @@
             </plane>
           </geometry>
           <material>
-            <!-- <ambient>0.8 0.8 0.8 1</ambient>
+            <ambient>0.8 0.8 0.8 1</ambient>
             <diffuse>0.8 0.8 0.8 1</diffuse>
-            <specular>0.8 0.8 0.8 1</specular> -->
-            <ambient>0.5 0.5 0.5 1</ambient>
+            <specular>0.8 0.8 0.8 1</specular>
+            <!-- <ambient>0.5 0.5 0.5 1</ambient>
             <diffuse>0.5 0.5 0.5 1</diffuse>
-            <specular>0.5 0.5 0.5 1</specular>
+            <specular>0.5 0.5 0.5 1</specular> -->
           </material>
         </visual>
         <pose>0 0 0 0 -0 0</pose>
@@ -124,6 +164,8 @@
       <pose>0 0 0 0 -0 0</pose>
       <self_collide>false</self_collide>
     </model>
+
+    
     <light name='sunUTC' type='directional'>
       <pose>0 0 500 0 -0 0</pose>
       <cast_shadows>false</cast_shadows>
@@ -143,5 +185,25 @@
         <falloff>0</falloff>
       </spot>
     </light>
+<!-- 
+    <light name='sun' type='directional'>
+      <pose>-5 -3 10 0 -0 0</pose>
+      <cast_shadows>false</cast_shadows>
+      <intensity>1</intensity>
+      <direction>0 0 -1</direction>
+      <diffuse>1 1 1 1</diffuse>
+      <specular>1 1 1 1</specular>
+      <attenuation>
+        <range>10</range>
+        <linear>1</linear>
+        <constant>1</constant>
+        <quadratic>0</quadratic>
+      </attenuation>
+      <spot>
+        <inner_angle>0</inner_angle>
+        <outer_angle>0</outer_angle>
+        <falloff>0</falloff>
+      </spot>
+    </light> -->
   </world>
 </sdf>
