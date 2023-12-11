@@ -18,7 +18,7 @@
     </plugin>
  
    <gui fullscreen='false'>
-      <!-- <plugin filename="ImageDisplay" name="Image Display">
+      <plugin filename="ImageDisplay" name="Image Display">
         <gz-gui>
           <title>Camera</title>
           <property type='bool' key='resizable'>0</property>
@@ -27,7 +27,7 @@
           <property key="state" type="string">docked</property>
         </gz-gui>
         <topic>/camera_vision</topic>
-      </plugin> -->
+      </plugin>
       <plugin name='3D View' filename='GzScene3D'>
         <gz-gui>
           <title>3D View</title>
@@ -71,12 +71,12 @@
         </gz-gui>
         <topic>/model/x500_0/cmd_vel</topic>
       </plugin>  -->
-      <plugin filename="VisualizeLidar" name="Visualize Lidar">
+      <!-- <plugin filename="VisualizeLidar" name="Visualize Lidar">
               <gz-gui>
                 <title>Lidar</title>
                 <property type="string" key="state">docked</property>
               </gz-gui>
-      </plugin>
+      </plugin> -->
     </gui> 
 
     <gravity>0 0 -9.8</gravity>
@@ -89,9 +89,15 @@
       <shadows>true</shadows>
     </scene>
 
-     <include>
+     <!-- <include>
       <uri>maze/model.sdf</uri>
-    </include>  
+    </include>   -->
+
+     <include>
+      <pose> 9 11.5 4 1.57 0 0 </pose>
+      <uri>cave_1/model.sdf</uri>
+      <static>true</static>
+    </include>
 
     <model name='ground_plane'>
       <static>true</static>
