@@ -89,20 +89,20 @@
 			<update_rate>250</update_rate>
 		</sensor>
 
-		<sensor name="Vision_camera" type="camera">
+		<!-- <sensor name="Vision_camera" type="camera">
 			<pose>0.1235 0 -0.003 0 0 0</pose>
 			<topic>camera_vision</topic>
 			<camera>
 				<horizontal_fov>1.3</horizontal_fov>
 				<image>
-					<width>720</width>
-					<height>360</height>
+					<width>480</width>
+					<height>480</height>
 				</image>
 			</camera>
 			<always_on>1</always_on>
 			<update_rate>20</update_rate>
 			<visualize>true</visualize>
-		</sensor>
+		</sensor> -->
 
 		<sensor name="out_camera" type="camera">
 			<pose>-1.2 0 0.25 0 0.5 0</pose>
@@ -119,7 +119,7 @@
 			<visualize>true</visualize>
 		</sensor>
 
-		<sensor name="front_laser" type="gpu_ray">
+		<!-- <sensor name="front_laser" type="gpu_ray">
 			<pose>0.055 0.058 -0.043 0 0 1.57</pose>
 			<update_rate>4</update_rate>
 			<topic>lidar</topic>
@@ -149,11 +149,11 @@
 					<stddev>0.01</stddev>
 				</noise>
 			</lidar>
-		</sensor>
+		</sensor> -->
 
 		<sensor name="depth_camera_on" type="depth_camera">
 			<pose>0.14 0.0 -0.045 0 0 0</pose>
-			<update_rate>6</update_rate>
+			<update_rate>5</update_rate>
 			<topic>depth_camera_on</topic>
 			<visualize>true</visualize>
 			<camera>
@@ -164,8 +164,8 @@
 					<format>R_FLOAT32</format>
 				</image>
 				<clip>
-					<near>0.01</near>
-					<far>2.0</far>
+					<near>0.05</near>
+					<far>2.2</far>
 				</clip>
 				<noise>
 					<type>gaussian</type>
@@ -177,7 +177,7 @@
 
 		<sensor name="depth_camera_on_sag" type="depth_camera">
 			<pose>0.11 -0.052 -0.041 0 0 -0.78</pose>
-			<update_rate>4</update_rate>
+			<update_rate>5</update_rate>
 			<topic>depth_camera_on_sag</topic>
 			<visualize>true</visualize>
 			<camera>
@@ -188,8 +188,8 @@
 					<format>R_FLOAT32</format>
 				</image>
 				<clip>
-					<near>0.01</near>
-					<far>2.5</far>
+					<near>0.05</near>
+					<far>2.2</far>
 				</clip>
 				<noise>
 					<type>gaussian</type>
@@ -201,7 +201,7 @@
 
 		<sensor name="depth_camera_on_sol" type="depth_camera">
 			<pose>0.11 0.052 -0.041 0 0 0.78</pose>
-			<update_rate>4</update_rate>
+			<update_rate>5</update_rate>
 			<topic>depth_camera_on_sol</topic>
 			<visualize>true</visualize>
 			<camera>
@@ -212,8 +212,8 @@
 					<format>R_FLOAT32</format>
 				</image>
 				<clip>
-					<near>0.01</near>
-					<far>2.5</far>
+					<near>0.05</near>
+					<far>2.2</far>
 				</clip>
 				<noise>
 					<type>gaussian</type>
@@ -225,31 +225,31 @@
 
 		<sensor name="depth_camera_sol" type="depth_camera">
 			<pose>0.058 0.058 -0.041 0 0 1.57</pose>
-			<update_rate>6</update_rate>
+			<update_rate>5</update_rate>
 			<topic>depth_camera_sol</topic>
 			<visualize>true</visualize>
 			<camera>
 				<horizontal_fov>0.785</horizontal_fov>
 				<image>
 					<format>R_FLOAT32</format>
-					<width>8</width>
-					<height>8</height>
+					<width>4</width>
+					<height>4</height>
 				</image>
 				<clip>
-					<near>0.01</near>
-					<far>2.0</far>
+					<near>0.05</near>
+					<far>2.2</far>
 				</clip>
 				<noise>
 					<type>gaussian</type>
 					<mean>0</mean>
-					<stddev>0.005</stddev>
+					<stddev>0.01</stddev>
 				</noise>
 			</camera>
 		</sensor>
 
 		<sensor name="depth_camera_sag" type="depth_camera">
 			<pose>0.058 -0.058 -0.041 0 0 -1.57</pose>
-			<update_rate>6</update_rate>
+			<update_rate>5</update_rate>
 			<topic>depth_camera_sag</topic>
 			<visualize>true</visualize>
 			<camera>
@@ -260,20 +260,20 @@
 					<height>4</height>
 				</image>
 				<clip>
-					<near>0.01</near>
-					<far>2.0</far>
+					<near>0.05</near>
+					<far>2.2</far>
 				</clip>
 				<noise>
 					<type>gaussian</type>
 					<mean>0</mean>
-					<stddev>0.005</stddev>
+					<stddev>0.01</stddev>
 				</noise>
 			</camera>
 		</sensor>
 
 		<sensor name="depth_camera_arka" type="depth_camera">
 			<pose>-0.075 -0.035 -0.040 0 0 3.14</pose>
-			<update_rate>4</update_rate>
+			<update_rate>5</update_rate>
 			<topic>depth_camera_arka</topic>
 			<visualize>true</visualize>
 			<camera>
@@ -284,8 +284,8 @@
 					<height>4</height>
 				</image>
 				<clip>
-					<near>0.01</near>
-					<far>2.5</far>
+					<near>0.05</near>
+					<far>2.2</far>
 				</clip>
 				<noise>
 					<type>gaussian</type>
@@ -297,19 +297,19 @@
 
 		<sensor name="depth_camera_ust" type="depth_camera">
 			<pose>0.06 0.015 0.02 0 -1.57 0</pose>
-			<update_rate>4</update_rate>
+			<update_rate>5</update_rate>
 			<topic>depth_camera_ust</topic>
 			<visualize>true</visualize>
 			<camera>
 				<horizontal_fov>0.785</horizontal_fov>
 				<image>
 					<format>R_FLOAT32</format>
-					<width>3</width>
-					<height>3</height>
+					<width>4</width>
+					<height>4</height>
 				</image>
 				<clip>
-					<near>0.01</near>
-					<far>2.0</far>
+					<near>0.05</near>
+					<far>2.2</far>
 				</clip>
 				<noise>
 					<type>gaussian</type>
@@ -321,15 +321,15 @@
 
 		<sensor name="depth_camera_alt" type="depth_camera">
 			<pose>0.115 -0.026 -0.06 0 1.57 0</pose>
-			<update_rate>4</update_rate>
+			<update_rate>5</update_rate>
 			<topic>depth_camera_alt</topic>
 			<visualize>true</visualize>
 			<camera>
 				<horizontal_fov>0.785</horizontal_fov>
 				<image>
 					<format>R_FLOAT32</format>
-					<width>3</width>
-					<height>3</height>
+					<width>4</width>
+					<height>4</height>
 				</image>
 				<clip>
 					<near>0.01</near>
