@@ -17,55 +17,80 @@
     </plugin>
    
    <gui fullscreen='false'>
-      <plugin name='3D View' filename='GzScene3D'>
-        <gz-gui>
-          <title>3D View</title>
-          <property type='bool' key='showTitleBar'>0</property>
-          <property type='string' key='state'>docked</property>
-        </gz-gui>
-        <engine>ogre2</engine>
-        <scene>scene</scene>
-        <ambient_light>0.5984631152222222 0.5984631152222222 0.5984631152222222</ambient_light>
-        <background_color>0.8984631152222222 0.8984631152222222 0.8984631152222222</background_color>
-        <camera_pose>-5 0 5 0 1 0</camera_pose>
-      </plugin>
-      <plugin name='World control' filename='WorldControl'>
-        <gz-gui>
-          <title>World control</title>
-          <property type='bool' key='showTitleBar'>0</property>
-          <property type='bool' key='resizable'>0</property>
-          <property type='double' key='height'>72</property>
-          <property type='double' key='width'>121</property>
-          <property type='double' key='z'>1</property>
-          <property type='string' key='state'>floating</property>
-          <anchors target='3D View'>
-            <line own='left' target='left'/>
-            <line own='bottom' target='bottom'/>
-          </anchors>
-        </gz-gui>
-        <play_pause>1</play_pause>
-        <step>1</step>
-        <start_paused>1</start_paused>
-      </plugin>
-      <plugin name='World stats' filename='WorldStats'>
-        <gz-gui>
-          <title>World stats</title>
-          <property type='bool' key='showTitleBar'>0</property>
-          <property type='bool' key='resizable'>0</property>
-          <property type='double' key='height'>110</property>
-          <property type='double' key='width'>290</property>
-          <property type='double' key='z'>1</property>
-          <property type='string' key='state'>floating</property>
-          <anchors target='3D View'>
-            <line own='right' target='right'/>
-            <line own='bottom' target='bottom'/>
-          </anchors>
-        </gz-gui>
-        <sim_time>1</sim_time>
-        <real_time>1</real_time>
-        <real_time_factor>1</real_time_factor>
-        <iterations>1</iterations>
-      </plugin>
+		<plugin name='3D View' filename='GzScene3D'>
+			<gz-gui>
+				<title>3D View</title>
+				<property type='bool' key='showTitleBar'>0</property>
+				<property type='string' key='state'>docked</property>
+			</gz-gui>
+			<engine>ogre2</engine>
+			<scene>scene</scene>
+			<ambient_light>0.598 0.598 0.598</ambient_light>
+			<background_color>0.898 0.898 0.898</background_color>
+			<camera_pose>-6 2 2 0 0.58 0</camera_pose>
+		</plugin>
+		<!-- <plugin name='World control' filename='WorldControl'>
+			<gz-gui>
+				<title>World control</title>
+				<property type='bool' key='showTitleBar'>0</property>
+				<property type='bool' key='resizable'>0</property>
+				<property type='double' key='height'>72</property>
+				<property type='double' key='width'>121</property>
+				<property type='double' key='z'>1</property>
+				<property type='string' key='state'>floating</property>
+				<anchors target='3D View'>
+					<line own='left' target='left'/>
+					<line own='bottom' target='bottom'/>
+				</anchors>
+			</gz-gui>
+			<play_pause>1</play_pause>
+			<step>1</step>
+			<start_paused>1</start_paused>
+		</plugin> -->
+		<plugin name='World stats' filename='WorldStats'>
+			<gz-gui>
+				<title>World stats</title>
+				<property type='bool' key='showTitleBar'>0</property>
+				<property type='bool' key='resizable'>0</property>
+				<property type='double' key='height'>110</property>
+				<property type='double' key='width'>290</property>
+				<property type='double' key='z'>1</property>
+				<property type='string' key='state'>floating</property>
+				<anchors target='3D View'>
+					<line own='right' target='right'/>
+					<line own='bottom' target='bottom'/>
+				</anchors>
+			</gz-gui>
+			<sim_time>1</sim_time>
+			<real_time>1</real_time>
+			<real_time_factor>1</real_time_factor>
+			<iterations>1</iterations>
+		</plugin>
+		<plugin filename="Shapes" name="Shapes">
+			<gz-gui>
+				<property key="resizable" type="bool">false</property>
+				<property key="x" type="double">0</property>
+				<property key="y" type="double">0</property>
+				<property key="width" type="double">250</property>
+				<property key="height" type="double">50</property>
+				<property key="state" type="string">floating</property>
+				<property key="showTitleBar" type="bool">false</property>
+				<property key="cardBackground" type="string">#666666</property>
+			</gz-gui>
+		</plugin>
+		<plugin filename="TransformControl" name="Transform control">
+			<gz-gui>
+				<property key="resizable" type="bool">false</property>
+				<property key="x" type="double">0</property>
+				<property key="y" type="double">50</property>
+				<property key="width" type="double">250</property>
+				<property key="height" type="double">50</property>
+				<property key="state" type="string">floating</property>
+				<property key="showTitleBar" type="bool">false</property>
+				<property key="cardBackground" type="string">#777777</property>
+			</gz-gui>
+		</plugin>
+
       <!-- <plugin name='Visualize lidar' filename='VisualizeLidar'/> -->
     </gui>
 
