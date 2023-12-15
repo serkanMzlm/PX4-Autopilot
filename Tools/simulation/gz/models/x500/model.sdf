@@ -32,10 +32,10 @@
 			</material>
 		</visual>
 		<collision name="base_link_collision_0">
-			<pose>0 0 -0.025 0 0 0</pose>
+			<pose>0.02 0 -0.025 0 0 0</pose>
 			<geometry>
 				<box>
-					<size>0.35355339059327373 0.35355339059327373 0.16</size>
+					<size>0.42 0.337 0.2</size>
 				</box>
 			</geometry>
 			<surface>
@@ -89,7 +89,7 @@
 			<update_rate>250</update_rate>
 		</sensor>
 
-		<!-- <sensor name="Vision_camera" type="camera">
+		<sensor name="Vision_camera" type="camera">
 			<pose>0.1235 0 -0.003 0 0 0</pose>
 			<topic>camera_vision</topic>
 			<camera>
@@ -102,9 +102,9 @@
 			<always_on>1</always_on>
 			<update_rate>20</update_rate>
 			<visualize>true</visualize>
-		</sensor> -->
+		</sensor>
 
-		<sensor name="out_camera" type="camera">
+		<!-- <sensor name="out_camera" type="camera">
 			<pose>-1.2 0 0.25 0 0.5 0</pose>
 			<topic>out_camera</topic>
 			<camera>
@@ -117,7 +117,7 @@
 			<always_on>1</always_on>
 			<update_rate>20</update_rate>
 			<visualize>true</visualize>
-		</sensor>
+		</sensor> -->
 
 		<!-- <sensor name="front_laser" type="gpu_ray">
 			<pose>0.055 0.058 -0.043 0 0 1.57</pose>
@@ -153,7 +153,7 @@
 
 		<sensor name="depth_camera_on" type="depth_camera">
 			<pose>0.14 0.0 -0.045 0 0 0</pose>
-			<update_rate>5</update_rate>
+			<update_rate>4</update_rate>
 			<topic>depth_camera_on</topic>
 			<visualize>true</visualize>
 			<camera>
@@ -165,7 +165,7 @@
 				</image>
 				<clip>
 					<near>0.05</near>
-					<far>2.2</far>
+					<far>2.0</far>
 				</clip>
 				<noise>
 					<type>gaussian</type>
@@ -177,7 +177,7 @@
 
 		<sensor name="depth_camera_on_sag" type="depth_camera">
 			<pose>0.11 -0.052 -0.041 0 0 -0.78</pose>
-			<update_rate>5</update_rate>
+			<update_rate>4</update_rate>
 			<topic>depth_camera_on_sag</topic>
 			<visualize>true</visualize>
 			<camera>
@@ -189,7 +189,7 @@
 				</image>
 				<clip>
 					<near>0.05</near>
-					<far>2.2</far>
+					<far>2.0</far>
 				</clip>
 				<noise>
 					<type>gaussian</type>
@@ -201,7 +201,7 @@
 
 		<sensor name="depth_camera_on_sol" type="depth_camera">
 			<pose>0.11 0.052 -0.041 0 0 0.78</pose>
-			<update_rate>5</update_rate>
+			<update_rate>4</update_rate>
 			<topic>depth_camera_on_sol</topic>
 			<visualize>true</visualize>
 			<camera>
@@ -213,7 +213,7 @@
 				</image>
 				<clip>
 					<near>0.05</near>
-					<far>2.2</far>
+					<far>2.0</far>
 				</clip>
 				<noise>
 					<type>gaussian</type>
@@ -225,7 +225,7 @@
 
 		<sensor name="depth_camera_sol" type="depth_camera">
 			<pose>0.058 0.058 -0.041 0 0 1.57</pose>
-			<update_rate>5</update_rate>
+			<update_rate>4</update_rate>
 			<topic>depth_camera_sol</topic>
 			<visualize>true</visualize>
 			<camera>
@@ -237,7 +237,7 @@
 				</image>
 				<clip>
 					<near>0.05</near>
-					<far>2.2</far>
+					<far>2.0</far>
 				</clip>
 				<noise>
 					<type>gaussian</type>
@@ -249,7 +249,7 @@
 
 		<sensor name="depth_camera_sag" type="depth_camera">
 			<pose>0.058 -0.058 -0.041 0 0 -1.57</pose>
-			<update_rate>5</update_rate>
+			<update_rate>4</update_rate>
 			<topic>depth_camera_sag</topic>
 			<visualize>true</visualize>
 			<camera>
@@ -261,7 +261,7 @@
 				</image>
 				<clip>
 					<near>0.05</near>
-					<far>2.2</far>
+					<far>2.0</far>
 				</clip>
 				<noise>
 					<type>gaussian</type>
@@ -273,7 +273,7 @@
 
 		<sensor name="depth_camera_arka" type="depth_camera">
 			<pose>-0.075 -0.035 -0.040 0 0 3.14</pose>
-			<update_rate>5</update_rate>
+			<update_rate>4</update_rate>
 			<topic>depth_camera_arka</topic>
 			<visualize>true</visualize>
 			<camera>
@@ -285,7 +285,7 @@
 				</image>
 				<clip>
 					<near>0.05</near>
-					<far>2.2</far>
+					<far>2.0</far>
 				</clip>
 				<noise>
 					<type>gaussian</type>
@@ -297,7 +297,7 @@
 
 		<sensor name="depth_camera_ust" type="depth_camera">
 			<pose>0.06 0.015 0.02 0 -1.57 0</pose>
-			<update_rate>5</update_rate>
+			<update_rate>4</update_rate>
 			<topic>depth_camera_ust</topic>
 			<visualize>true</visualize>
 			<camera>
@@ -309,7 +309,7 @@
 				</image>
 				<clip>
 					<near>0.05</near>
-					<far>2.2</far>
+					<far>2.0</far>
 				</clip>
 				<noise>
 					<type>gaussian</type>
@@ -321,7 +321,7 @@
 
 		<sensor name="depth_camera_alt" type="depth_camera">
 			<pose>0.115 -0.026 -0.06 0 1.57 0</pose>
-			<update_rate>5</update_rate>
+			<update_rate>4</update_rate>
 			<topic>depth_camera_alt</topic>
 			<visualize>true</visualize>
 			<camera>
@@ -333,7 +333,7 @@
 				</image>
 				<clip>
 					<near>0.01</near>
-					<far>4.0</far>
+					<far>3.0</far>
 				</clip>
 				<noise>
 					<type>gaussian</type>
@@ -415,7 +415,7 @@
           </script>
         </material>
       </visual>
-      <collision name="rotor_0_collision">
+      <!-- <collision name="rotor_0_collision">
         <pose>0 0 0 0 0 0 </pose>
         <geometry>
           <box>
@@ -433,7 +433,7 @@
             <ode/>
           </friction>
         </surface>
-      </collision>
+      </collision> -->
     </link>
     <joint name="rotor_0_joint" type="revolute">
       <parent>base_link</parent>
@@ -478,7 +478,7 @@
           </script>
         </material>
       </visual>
-      <collision name="rotor_1_collision">
+      <!-- <collision name="rotor_1_collision">
         <pose>0 0 0 0 0 0 </pose>
         <geometry>
           <box>
@@ -496,7 +496,7 @@
             <ode/>
           </friction>
         </surface>
-      </collision>
+      </collision> -->
     </link>
     <joint name="rotor_1_joint" type="revolute">
       <parent>base_link</parent>
@@ -541,7 +541,7 @@
           </script>
         </material>
       </visual>
-      <collision name="rotor_2_collision">
+      <!-- <collision name="rotor_2_collision">
         <pose>0 0 0 0 0 0 </pose>
         <geometry>
           <box>
@@ -559,7 +559,7 @@
             <ode/>
           </friction>
         </surface>
-      </collision>
+      </collision> -->
     </link>
     <joint name="rotor_2_joint" type="revolute">
       <parent>base_link</parent>
@@ -604,7 +604,7 @@
           </script>
         </material>
       </visual>
-      <collision name="rotor_3_collision">
+      <!-- <collision name="rotor_3_collision">
         <pose>0 0 0 0 0 0 </pose>
         <geometry>
           <box>
@@ -622,7 +622,7 @@
             <ode/>
           </friction>
         </surface>
-      </collision>
+      </collision> -->
     </link>
     <joint name="rotor_3_joint" type="revolute">
       <parent>base_link</parent>
@@ -730,13 +730,13 @@
             rgba="1 0.93725 0.13725 1" />
         </material>
       </visual>
-      <collision name= "rovercopter_v3/sag_palet_collision">
+      <!-- <collision name= "rovercopter_v3/sag_palet_collision">
         <geometry>
           <box>
             <size>0.40 0.02 0.2</size>
           </box>
         </geometry>
-      </collision>
+      </collision> -->
     </link>
     <joint name="rovercopter_v3/J_SAG-PALET" type="fixed">
       <parent> base_link </parent>
@@ -781,13 +781,13 @@
             rgba="1 0.93725 0.13725 1" />
         </material>
       </visual>
-      <collision name= "rovercopter_v3/sol_palet_collision">
+      <!-- <collision name= "rovercopter_v3/sol_palet_collision">
         <geometry>
           <box>
               <size>0.40 0.02 0.2</size>
           </box>
         </geometry>
-      </collision>
+      </collision> -->
     </link>
     <joint name="rovercopter_v3/J_SOL-PALET" type="fixed">
       <parent> base_link </parent>
