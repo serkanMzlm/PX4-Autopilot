@@ -2,9 +2,9 @@
 <sdf version='1.9'>
   <world name='default'>
     <physics type="ode">
-      <max_step_size>0.004</max_step_size>
-      <real_time_factor>1.0</real_time_factor>
-      <real_time_update_rate>250</real_time_update_rate>
+      <max_step_size>0.005</max_step_size>
+      <real_time_factor>1.001</real_time_factor>
+      <real_time_update_rate>200</real_time_update_rate>
     </physics>
     <plugin name='gz::sim::systems::Physics' filename='gz-sim-physics-system'/>
     <plugin name='gz::sim::systems::UserCommands' filename='gz-sim-user-commands-system'/>
@@ -97,8 +97,8 @@
     <gravity>0 0 -9.8</gravity>
     <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
     <atmosphere type='adiabatic'/>
-
-   <!-- <include>
+<!-- 
+   <include>
       <uri>maze/</uri>
   </include>  -->
   
@@ -112,9 +112,15 @@
 		<pose> 16.4 -17.5 0 -1.57 0 0 </pose>
 		<uri>cave_1/model.sdf</uri>
 	</include>
+
 	<include>
 		<uri>model://gray_ground</uri>
 	</include>
+
+	<!-- <include>
+		<pose>-2 2 0 0 0 0</pose>
+		<uri>model://cube</uri>
+	</include> -->
 
     <light name='sunUTC' type='directional'>
       <pose>0 0 200 0 -0 0</pose>
@@ -124,7 +130,7 @@
       <diffuse>0.604 0.604 0.604 1</diffuse>
       <specular>0.271 0.271 0.271 1</specular>
       <attenuation>
-        <range>2000</range>
+        <range>100</range>
         <linear>0</linear>
         <constant>1</constant>
         <quadratic>0</quadratic>
