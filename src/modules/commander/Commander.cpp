@@ -612,7 +612,7 @@ transition_result_t Commander::disarm(arm_disarm_reason_t calling_reason, bool f
 				"Disarming denied, not landed");
 			}
 
-			return TRANSITION_DENIED;
+			// return TRANSITION_DENIED;
 		}
 	}
 
