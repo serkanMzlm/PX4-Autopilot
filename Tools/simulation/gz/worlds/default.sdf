@@ -97,21 +97,21 @@
     <gravity>0 0 -9.8</gravity>
     <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
     <atmosphere type='adiabatic'/>
-<!-- 
+
    <include>
       <uri>maze/</uri>
-  </include>  -->
+  </include> 
   
   <!-- <include>
       <pose> 5 -7 0 0 0 0 </pose>
       <uri>smoke/</uri>
   </include> -->
 
-	<include>
+	<!-- <include>
 		<static>true</static>
 		<pose> 16.4 -17.5 0 -1.57 0 0 </pose>
 		<uri>cave_1/model.sdf</uri>
-	</include>
+	</include> -->
 
 	<include>
 		<uri>model://gray_ground</uri>
