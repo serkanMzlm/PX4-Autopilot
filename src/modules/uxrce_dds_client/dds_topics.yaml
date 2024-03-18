@@ -47,6 +47,14 @@ publications:
   - topic: /fmu/out/vehicle_trajectory_waypoint_desired
     type: px4_msgs::msg::VehicleTrajectoryWaypoint
 
+  - topic: /fmu/out/vehicle_imu
+    type: px4_msgs::msg::VehicleImu
+
+  # - topic: /fmu/out/battery_status
+  #   type: px4_msgs::msg::BatteryStatus
+
+    # vehicle_imu.msg
+
 subscriptions:
 
   - topic: /fmu/in/offboard_control_mode
