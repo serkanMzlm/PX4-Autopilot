@@ -128,5 +128,17 @@
         "yaml.schemas": {
                 "${workspaceFolder}/validation/module_schema.yaml": "${workspaceFolder}/src/modules/*/module.yaml"
         },
-        "ros.distro": "humble"
+        "ros.distro": "humble",
+        "python.autoComplete.extraPaths": [
+                "/home/serkan/ros_gz/install/ros_ign_interfaces/local/lib/python3.10/dist-packages",
+                "/home/serkan/ros_gz/install/ros_gz_interfaces/local/lib/python3.10/dist-packages",
+                "/opt/ros/humble/lib/python3.10/site-packages",
+                "/opt/ros/humble/local/lib/python3.10/dist-packages"
+        ],
+        "python.analysis.extraPaths": [
+                "/home/serkan/ros_gz/install/ros_ign_interfaces/local/lib/python3.10/dist-packages",
+                "/home/serkan/ros_gz/install/ros_gz_interfaces/local/lib/python3.10/dist-packages",
+                "/opt/ros/humble/lib/python3.10/site-packages",
+                "/opt/ros/humble/local/lib/python3.10/dist-packages"
+        ]
 }
