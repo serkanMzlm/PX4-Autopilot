@@ -35,6 +35,7 @@ pipeline {
 
           def nuttx_builds_archive = [
             target: [
+                     "3dr_ctrl-zero-h7-oem-revg_default",
                      "airmind_mindpx-v2_default",
                      "ark_can-flow_canbootloader",
                      "ark_can-flow_default",
@@ -76,6 +77,7 @@ pipeline {
                      "matek_h743-mini_default",
                      "matek_h743-slim_default",
                      "matek_h743_default",
+                     "micoair_h743_default",
                      "modalai_fc-v1_default",
                      "modalai_fc-v2_default",
                      "mro_ctrl-zero-classic_default",

@@ -280,6 +280,18 @@ MavlinkReceiver::handle_message(mavlink_message_t *msg)
 		handle_message_statustext(msg);
 		break;
 
+	case MAVLINK_MSG_ID_OPEN_DRONE_ID_OPERATOR_ID:
+		handle_message_open_drone_id_operator_id(msg);
+		break;
+
+	case MAVLINK_MSG_ID_OPEN_DRONE_ID_SELF_ID:
+		handle_message_open_drone_id_self_id(msg);
+		break;
+
+	case MAVLINK_MSG_ID_OPEN_DRONE_ID_SYSTEM:
+		handle_message_open_drone_id_system(msg);
+		break;
+
 #if !defined(CONSTRAINED_FLASH)
 
 	case MAVLINK_MSG_ID_NAMED_VALUE_FLOAT:
@@ -404,6 +416,34 @@ MavlinkReceiver::handle_message(mavlink_message_t *msg)
 
 	/* handle packet with parent object */
 	_mavlink.handle_message(msg);
+}
+
+void MavlinkReceiver::handle_messages_in_gimbal_mode(mavlink_message_t &msg)
+{
+	switch (msg.msgid) {
+	case MAVLINK_MSG_ID_HEARTBEAT:
+		handle_message_heartbeat(&msg);
+		break;
+
+	case MAVLINK_MSG_ID_GIMBAL_MANAGER_SET_ATTITUDE:
+		handle_message_gimbal_manager_set_attitude(&msg);
+		break;
+
+	case MAVLINK_MSG_ID_GIMBAL_MANAGER_SET_MANUAL_CONTROL:
+		handle_message_gimbal_manager_set_manual_control(&msg);
+		break;
+
+	case MAVLINK_MSG_ID_GIMBAL_DEVICE_INFORMATION:
+		handle_message_gimbal_device_information(&msg);
+		break;
+
+	case MAVLINK_MSG_ID_GIMBAL_DEVICE_ATTITUDE_STATUS:
+		handle_message_gimbal_device_attitude_status(&msg);
+		break;
+	}
+
+	// Message forwarding
+	_mavlink.handle_message(&msg);
 }
 
 bool
@@ -1598,11 +1638,6 @@ MavlinkReceiver::handle_message_set_attitude_target(mavlink_message_t *msg)
 			const matrix::Quatf q{attitude_target.q};
 			q.copyTo(attitude_setpoint.q_d);
 
-			matrix::Eulerf euler{q};
-			attitude_setpoint.roll_body = euler.phi();
-			attitude_setpoint.pitch_body = euler.theta();
-			attitude_setpoint.yaw_body = euler.psi();
-
 			// TODO: review use case
 			attitude_setpoint.yaw_sp_move_rate = (type_mask & ATTITUDE_TARGET_TYPEMASK_BODY_YAW_RATE_IGNORE) ?
 							     (float)NAN : attitude_target.body_yaw_rate;
@@ -2110,6 +2145,19 @@ MavlinkReceiver::handle_message_manual_control(mavlink_message_t *msg)
 	manual_control_setpoint.yaw = mavlink_manual_control.r / 1000.f;
 	// Pass along the button states
 	manual_control_setpoint.buttons = mavlink_manual_control.buttons;
+
+	if (mavlink_manual_control.enabled_extensions & (1u << 2)) { manual_control_setpoint.aux1 = mavlink_manual_control.aux1 / 1000.0f; }
+
+	if (mavlink_manual_control.enabled_extensions & (1u << 3)) { manual_control_setpoint.aux2 = mavlink_manual_control.aux2 / 1000.0f; }
+
+	if (mavlink_manual_control.enabled_extensions & (1u << 4)) { manual_control_setpoint.aux3 = mavlink_manual_control.aux3 / 1000.0f; }
+
+	if (mavlink_manual_control.enabled_extensions & (1u << 5)) { manual_control_setpoint.aux4 = mavlink_manual_control.aux4 / 1000.0f; }
+
+	if (mavlink_manual_control.enabled_extensions & (1u << 6)) { manual_control_setpoint.aux5 = mavlink_manual_control.aux5 / 1000.0f; }
+
+	if (mavlink_manual_control.enabled_extensions & (1u << 7)) { manual_control_setpoint.aux6 = mavlink_manual_control.aux6 / 1000.0f; }
+
 	manual_control_setpoint.data_source = manual_control_setpoint_s::SOURCE_MAVLINK_0 + _mavlink.get_instance_id();
 	manual_control_setpoint.timestamp = manual_control_setpoint.timestamp_sample = hrt_absolute_time();
 	manual_control_setpoint.valid = true;
@@ -3048,6 +3096,64 @@ MavlinkReceiver::handle_message_gimbal_device_attitude_status(mavlink_message_t 
 	_gimbal_device_attitude_status_pub.publish(gimbal_attitude_status);
 }
 
+void MavlinkReceiver::handle_message_open_drone_id_operator_id(
+	mavlink_message_t *msg)
+{
+	mavlink_open_drone_id_operator_id_t odid_module;
+	mavlink_msg_open_drone_id_operator_id_decode(msg, &odid_module);
+
+	open_drone_id_operator_id_s odid_operator_id{};
+	memset(&odid_operator_id, 0, sizeof(odid_operator_id));
+
+	odid_operator_id.timestamp = hrt_absolute_time();
+	memcpy(odid_operator_id.id_or_mac, odid_module.id_or_mac, sizeof(odid_operator_id.id_or_mac));
+	odid_operator_id.operator_id_type = odid_module.operator_id_type;
+	memcpy(odid_operator_id.operator_id, odid_module.operator_id, sizeof(odid_operator_id.operator_id));
+
+	_open_drone_id_operator_id_pub.publish(odid_operator_id);
+}
+
+void MavlinkReceiver::handle_message_open_drone_id_self_id(mavlink_message_t *msg)
+{
+	mavlink_open_drone_id_self_id_t odid_module;
+	mavlink_msg_open_drone_id_self_id_decode(msg, &odid_module);
+
+	open_drone_id_self_id_s odid_self_id{};
+	memset(&odid_self_id, 0, sizeof(odid_self_id));
+
+	odid_self_id.timestamp = hrt_absolute_time();
+	memcpy(odid_self_id.id_or_mac, odid_module.id_or_mac, sizeof(odid_self_id.id_or_mac));
+	odid_self_id.description_type = odid_module.description_type;
+	memcpy(odid_self_id.description, odid_module.description, sizeof(odid_self_id.description));
+
+	_open_drone_id_self_id_pub.publish(odid_self_id);
+}
+
+void MavlinkReceiver::handle_message_open_drone_id_system(
+	mavlink_message_t *msg)
+{
+	mavlink_open_drone_id_system_t odid_module;
+	mavlink_msg_open_drone_id_system_decode(msg, &odid_module);
+
+	open_drone_id_system_s odid_system{};
+	memset(&odid_system, 0, sizeof(odid_system));
+
+	odid_system.timestamp = hrt_absolute_time();
+	memcpy(odid_system.id_or_mac, odid_module.id_or_mac, sizeof(odid_system.id_or_mac));
+	odid_system.operator_location_type = odid_module.operator_location_type;
+	odid_system.classification_type = odid_module.classification_type;
+	odid_system.operator_latitude = odid_module.operator_latitude;
+	odid_system.operator_longitude = odid_module.operator_longitude;
+	odid_system.area_count = odid_module.area_count;
+	odid_system.area_radius = odid_module.area_radius;
+	odid_system.area_ceiling = odid_module.area_ceiling;
+	odid_system.area_floor = odid_module.area_floor;
+	odid_system.category_eu = odid_module.category_eu;
+	odid_system.class_eu = odid_module.class_eu;
+	odid_system.operator_altitude_geo = odid_module.operator_altitude_geo;
+
+	_open_drone_id_system_pub.publish(odid_system);
+}
 void
 MavlinkReceiver::run()
 {
@@ -3163,7 +3269,16 @@ MavlinkReceiver::run()
 							_mavlink.set_proto_version(2);
 						}
 
-						handle_message(&msg);
+						switch (_mavlink.get_mode()) {
+						case Mavlink::MAVLINK_MODE::MAVLINK_MODE_GIMBAL:
+							handle_messages_in_gimbal_mode(msg);
+							break;
+
+						default:
+							handle_message(&msg);
+							break;
+						}
+
 						_mavlink.set_has_received_messages(true); // Received first message, unlock wait to transmit '-w' command-line flag
 						update_rx_stats(msg);
 

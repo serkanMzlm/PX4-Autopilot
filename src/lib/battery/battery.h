@@ -91,6 +91,7 @@ public:
 	void setStateOfCharge(const float soc) { _state_of_charge = soc; _external_state_of_charge = true; }
 	void updateVoltage(const float voltage_v);
 	void updateCurrent(const float current_a);
+	void updateTemperature(const float temperature_c);
 
 	/**
 	 * Update state of charge calculations
@@ -168,6 +169,7 @@ private:
 	float _current_a{-1};
 	AlphaFilter<float>
 	_current_average_filter_a; ///< averaging filter for current. For FW, it is the current in level flight.
+	float _temperature_c{NAN};
 	float _discharged_mah{0.f};
 	float _discharged_mah_loop{0.f};
 	float _state_of_charge_volt_based{-1.f}; // [0,1]
@@ -184,6 +186,7 @@ private:
 	void resetInternalResistanceEstimation(const float voltage_v, const float current_a);
 	matrix::Vector2f _RLS_est; // [Open circuit voltage estimate [V], Total internal resistance estimate [Ohm]]^T
 	matrix::Matrix2f _estimation_covariance;
+	bool _internal_resistance_initialized{false};
 	float _estimation_covariance_norm{0.f};
 	float _internal_resistance_estimate{0.005f}; // [Ohm] Per cell estimate of the internal resistance
 	float _voltage_prediction{0.f}; // [V] Predicted voltage of the estimator
