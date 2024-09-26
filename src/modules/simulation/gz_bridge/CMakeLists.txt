@@ -89,9 +89,13 @@ if(gz-transport_FOUND)
 	)
 
 	set(gz_worlds
+		aruco
 		default
 		windy
 		baylands
+		walls
+		rover
+		maze
   		lawn
 	)
 
