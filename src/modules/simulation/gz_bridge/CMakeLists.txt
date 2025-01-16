@@ -97,6 +97,7 @@ if(gz-transport_FOUND)
 		rover
 		maze
   		lawn
+		terrain
 	)
 
 	# find corresponding airframes

@@ -6,7 +6,7 @@ serial_config:
         else
             set UXRCE_DDS_ARGS "-t udp"
         fi
-        uxrce_dds_client start ${UXRCE_DDS_ARGS}
+        uxrce_dds_client start ${UXRCE_DDS_ARGS} -n quark_2
 
       port_config_param:
         name: UXRCE_DDS_CFG
