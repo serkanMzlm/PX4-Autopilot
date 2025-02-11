@@ -89,10 +89,17 @@ if(gz-transport_FOUND)
 	)
 
 	set(gz_worlds
-		default
-		windy
+		aruco
 		baylands
-  		lawn
+		default
+		frictionless
+		lawn
+		maze
+		mountain
+		rover
+		terrain
+		walls
+		windy
 	)
 
 	# find corresponding airframes

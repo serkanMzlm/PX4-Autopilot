@@ -103,18 +103,25 @@ int GZBridge::init()
 
 			gz::msgs::Pose *p = req.mutable_pose();
 			gz::msgs::Vector3d *position = p->mutable_position();
-			position->set_x(model_pose_v[0]);
-			position->set_y(model_pose_v[1]);
-			position->set_z(model_pose_v[2]);
+			// position->set_x(model_pose_v[0]);
+			// position->set_y(model_pose_v[1]);
+			// position->set_z(model_pose_v[2]);
+			position->set_x(5);
+			position->set_y(-495);
+			position->set_z(1);
 
 			gz::math::Quaterniond q(model_pose_v[3], model_pose_v[4], model_pose_v[5]);
 
 			q.Normalize();
 			gz::msgs::Quaternion *orientation = p->mutable_orientation();
-			orientation->set_x(q.X());
-			orientation->set_y(q.Y());
-			orientation->set_z(q.Z());
-			orientation->set_w(q.W());
+			orientation->set_x(0.0);
+			orientation->set_y(0.0);
+			orientation->set_z(0.71);
+			orientation->set_w(0.71);
+			// orientation->set_x(q.X());
+			// orientation->set_y(q.Y());
+			// orientation->set_z(q.Z());
+			// orientation->set_w(q.W());
 		}
 
 		//world/$WORLD/create service.
