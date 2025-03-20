@@ -50,8 +50,8 @@
 #define TF02PRO_BASEADDR			0x10 	// 7-bit address. 8-bit address is 0x20.
 
 /* Device limits */
-#define TF02PRO_MIN_DISTANCE 			(0.10f)
-#define TF02PRO_MAX_DISTANCE 			(35.00f)
+#define TF02PRO_MIN_DISTANCE 			(0.05f)
+#define TF02PRO_MAX_DISTANCE 			(7.00f)
 
 #define TF02PRO_CONVERSION_INTERVAL 		100000	// 100 ms for one sensor.
 
