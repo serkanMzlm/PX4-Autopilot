@@ -2183,6 +2183,7 @@ bool EKF2::UpdateExtVisionSample(ekf2_timestamps_s &ekf2_timestamps)
 {
 	// EKF external vision sample
 	bool new_ev_odom = false;
+	float px = NAN, py = NAN, pz = NAN;
 
 	vehicle_odometry_s ev_odom;
 
@@ -2192,7 +2193,6 @@ bool EKF2::UpdateExtVisionSample(ekf2_timestamps_s &ekf2_timestamps)
 		ev_data.pos.setNaN();
 		ev_data.vel.setNaN();
 		ev_data.quat.setNaN();
-
 		// check for valid velocity data
 		const Vector3f ev_odom_vel(ev_odom.velocity);
 		const Vector3f ev_odom_vel_var(ev_odom.velocity_variance);
@@ -2235,6 +2235,7 @@ bool EKF2::UpdateExtVisionSample(ekf2_timestamps_s &ekf2_timestamps)
 
 				new_ev_odom = true;
 			}
+
 		}
 
 		// check for valid position data
@@ -2260,6 +2261,10 @@ bool EKF2::UpdateExtVisionSample(ekf2_timestamps_s &ekf2_timestamps)
 				ev_data.pos = ev_odom_pos;
 
 				const float evp_noise_var = sq(_param_ekf2_evp_noise.get());
+
+				px = ev_odom_pos(0);
+				py = ev_odom_pos(1);
+				pz = ev_odom_pos(2);
 
 				// position measurement error from ev_data or parameters
 				if ((_param_ekf2_ev_noise_md.get() == 0) && ev_odom_pos_var.isAllFinite()) {
@@ -2315,13 +2320,17 @@ bool EKF2::UpdateExtVisionSample(ekf2_timestamps_s &ekf2_timestamps)
 		ev_data.reset_counter = ev_odom.reset_counter;
 		ev_data.quality = ev_odom.quality;
 
-		if (new_ev_odom)  {
+		if (new_ev_odom && ev_data.quality > 50.0f)  {
+		// if (new_ev_odom )  {
+
+			 PX4_INFO("EV pose NED [%.2f %.2f %.2f] qual=%.2f", (double)px, (double)py, (double)pz, (double)ev_data.quality);
 			_ekf.setExtVisionData(ev_data);
 		}
 
 		ekf2_timestamps.visual_odometry_timestamp_rel = (int16_t)((int64_t)ev_odom.timestamp / 100 -
 				(int64_t)ekf2_timestamps.timestamp / 100);
 	}
+
 
 	return new_ev_odom;
 }
